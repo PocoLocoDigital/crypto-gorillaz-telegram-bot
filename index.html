@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Telegram Mini Apps Vanilla JS Sample App</title>
-    <link rel="stylesheet" href="https://web.telegram.org/k/index-vX_PR0Tt.css">
     <style>
         body {
             --bg-color: var(--tg-theme-bg-color);
@@ -65,6 +64,49 @@
 		width: 640px;
 		max-width: 100%;
 	}
+	input, textarea, button, select, a, div {
+	    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
+	.btn-bot-primary {
+	    border-radius: 10px;
+	    /*width: 100%;*/
+	    text-align: center;
+	    height: 54px;
+	    border: none;
+	    font-weight: var(--font-weight-bold);
+	    cursor: pointer;
+	    overflow: hidden;
+	    position: relative;
+	    padding: 0;
+	    transition: .2s opacity;
+	}
+	    
+        .btn-bot-primary {
+	    display: block;
+	    text-transform: uppercase;
+	    margin: .5rem 0;
+	    padding: 0 1.0625rem;
+	    height: 44px;
+	    line-height: 44px;
+	    margin-top: 1px;
+	}
+	.btn-bot-primary.btn-bot-color-primary {
+	    background: var(--tg-theme-link-color);
+	    color: var(--tg-theme-text-color);
+	}
+	    
+	.btn-bot-primary.btn-bot-color-secondary {
+	    /*	
+	    --primary-color: #8774e1;
+	    --primary-color-rgb: 135, 116, 225;
+	    --light-primary-color: rgba(135, 116, 225, 0.08);
+	    --light-filled-primary-color: #292730;
+	    --dark-primary-color: hsl(250.45871559633028, 64.49704142011832%, 62.86274509803921%);
+	    color: rgb(255, 255, 255);*/
+		
+	    color: var(--tg-theme-link-color);
+	    background: var(--tg-theme-text-color);
+	}
     </style>
 </head>
 
@@ -80,8 +122,8 @@
         </div>
 		
         <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');">Launch Alert</button>
-        <button onclick="showPopup();">Launch Popup</button>
+        <button onclick="Telegram.WebApp.showAlert('Hello World!');" class="btn-bot-primary btn-bot-color-primary">Launch Alert</button>
+        <button onclick="showPopup();" class="btn-bot-primary btn-bot-color-primary">Launch Popup</button>
 
         <h1>Links</h1>
         <ul>
@@ -97,8 +139,8 @@
         </ul>
 
         <h1>Buttons</h1>
-        <button onclick="Telegram.WebApp.expand();">Expand Webview</button>
-        <button onclick="toggleMainButton();">Toggle Main Button</button>
+        <button onclick="Telegram.WebApp.expand();" class="btn-bot-primary btn-bot-color-secondary">Expand Webview</button>
+        <button onclick="toggleMainButton();" class="btn-bot-primary btn-bot-color-secondary">Toggle Main Button</button>
     </main>
     <div id="viewport"></div>
     <div id="viewport-params-size"></div>
@@ -148,12 +190,16 @@
         };
 
         function setViewportData() {
+	    
             var sizeEl = document.getElementById('viewport-params-size');
-            sizeEl.innerText = 'width: ' + window.innerWidth + ' x ' + 
+            /*
+	    sizeEl.innerText = 'width: ' + window.innerWidth + ' x ' + 
                 'height: ' + Telegram.WebApp.viewportStableHeight;
-
+	    */
             var expandEl = document.querySelector('#viewport-params-expand');
+	    /*
             expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
+	    */
         }
 
         Telegram.WebApp.setHeaderColor('secondary_bg_color');
