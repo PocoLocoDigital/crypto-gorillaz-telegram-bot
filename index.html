@@ -107,6 +107,13 @@
 	    color: var(--tg-theme-link-color);
 	    background: var(--tg-theme-text-color);
 	}
+	.btn-bot-primary.half-size {
+	    float: left;
+	    width: 49%;
+	    max-width:49%;
+	    margin-left: 0.5%;
+	    margin-right: 0.5%;
+	}
     </style>
 </head>
 
@@ -122,8 +129,8 @@
         </div>
 		
         <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');" class="btn-bot-primary btn-bot-color-primary">Launch Alert</button>
-        <button onclick="showPopup();" class="btn-bot-primary btn-bot-color-primary">Launch Popup</button>
+        <button onclick="Telegram.WebApp.showAlert('Hello World!');" class="btn-bot-primary btn-bot-color-primary half-size">Launch Alert</button>
+        <button onclick="showPopup();" class="btn-bot-primary btn-bot-color-primary half-size">Launch Popup</button>
 
         <h1>Links</h1>
         <ul>
@@ -139,8 +146,8 @@
         </ul>
 
         <h1>Buttons</h1>
-        <button onclick="Telegram.WebApp.expand();" class="btn-bot-primary btn-bot-color-secondary">Expand Webview</button>
-        <button onclick="toggleMainButton();" class="btn-bot-primary btn-bot-color-secondary">Toggle Main Button</button>
+        <button onclick="Telegram.WebApp.expand();" class="btn-bot-primary btn-bot-color-secondary half-size">Expand Webview</button>
+        <button onclick="toggleMainButton();" class="btn-bot-primary btn-bot-color-secondary half-size">Toggle Main Button</button>
     </main>
     <div id="viewport"></div>
     <div id="viewport-params-size"></div>
