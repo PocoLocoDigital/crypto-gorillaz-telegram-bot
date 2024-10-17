@@ -4,14 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Telegram Mini Apps Vanilla JS Sample App</title>
+	
+    <title>Crypto GorillaZ | Mini App</title>
+	
     <style>
+		
         body {
             --bg-color: var(--tg-theme-bg-color);
             font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
             background-color: var(--bg-color);
             color: var(--tg-theme-text-color);
-            margin: 0px 24px 48px 24px;
+            margin: 48px 24px;
             padding: 0;
             color-scheme: var(--tg-color-scheme);
         }
@@ -19,7 +22,7 @@
         a {
             color: var(--tg-theme-link-color);
         }
-	
+		
         #viewport {
             position: fixed;
             left: 0;
@@ -58,66 +61,20 @@
             top: 4px;
         }
         #viewport-params-expand {
-            top: 0px;
+            top: 30px;
         }
-	.app-header-image {
-		width: 640px;
-		max-width: 100%;
-	}
-	input, textarea, button, select, a, div {
-	    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	}
-	.btn-bot-primary {
-	    border-radius: 10px;
-	    /*width: 100%;*/
-	    text-align: center;
-	    height: 54px;
-	    border: none;
-	    font-weight: var(--font-weight-bold);
-	    cursor: pointer;
-	    overflow: hidden;
-	    position: relative;
-	    padding: 0;
-	    transition: .2s opacity;
-	}
-	    
-        .btn-bot-primary {
-	    display: block;
-	    text-transform: uppercase;
-	    margin: .5rem 0;
-	    padding: 0 1.0625rem;
-	    height: 44px;
-	    line-height: 44px;
-	    margin-top: 1px;
-	}
-	.btn-bot-primary.btn-bot-color-primary {
-	    background: var(--tg-theme-link-color);
-	    color: var(--tg-theme-text-color);
-	}
-	    
-	.btn-bot-primary.btn-bot-color-secondary {
-	    /*	
-	    --primary-color: #8774e1;
-	    --primary-color-rgb: 135, 116, 225;
-	    --light-primary-color: rgba(135, 116, 225, 0.08);
-	    --light-filled-primary-color: #292730;
-	    --dark-primary-color: hsl(250.45871559633028, 64.49704142011832%, 62.86274509803921%);
-	    color: rgb(255, 255, 255);*/
 		
-	    color: var(--tg-theme-link-color);
-	    background: var(--tg-theme-text-color);
-	}
-	.btn-bot-primary.half-size {
-	    float: left;
-	    width: 49%;
-	    max-width:49%;
-	    margin-left: 0.5%;
-	    margin-right: 0.5%;
-	}
+		.app-header-image {
+			width: 640px;
+			max-width: 100%;
+		}
+		
     </style>
+	<script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 </head>
 
 <body>
+	
     <main>
 		
         <div align="center">
@@ -129,33 +86,58 @@
         </div>
 		
         <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');" class="btn-bot-primary btn-bot-color-primary half-size">Launch Alert</button>
-        <button onclick="showPopup();" class="btn-bot-primary btn-bot-color-primary half-size">Launch Popup</button>
+		
+        <button onclick="Telegram.WebApp.showAlert('Hello World!');">
+			Launch Alert
+		</button>
+		
+        <button onclick="showPopup();">
+			Launch Popup
+		</button>
 
         <h1>Links</h1>
+		
         <ul>
             <li>
-                <a href="javascript:Telegram.WebApp.openTelegramLink('https://t.me/trendingapps');">Open link within Telegram</a>
+                <a href="javascript:Telegram.WebApp.openTelegramLink('https://t.me/trendingapps');">
+					Open link within Telegram
+				</a>
             </li>
             <li>
-                <a href="javascript:Telegram.WebApp.openLink('https://gorillaz.pocoloco-digital.com/');">Open link in external browser</a>
+                <a href="javascript:Telegram.WebApp.openLink('https://gorillaz.pocoloco-digital.com/');">
+					Open link in external browser
+				</a>
             </li>
             <li>
-                <a href="javascript:Telegram.WebApp.openLink('https://telegra.ph/api',{try_instant_view:true});">Open link inside Telegram webview</a>
+                <a href="javascript:Telegram.WebApp.openLink('https://telegra.ph/api',{try_instant_view:true});">
+					Open link inside Telegram webview
+				</a>
             </li>
         </ul>
 
         <h1>Buttons</h1>
-        <button onclick="Telegram.WebApp.expand();" class="btn-bot-primary btn-bot-color-secondary half-size">Expand Webview</button>
-        <button onclick="toggleMainButton();" class="btn-bot-primary btn-bot-color-secondary half-size">Toggle Main Button</button>
+		
+        <button onclick="Telegram.WebApp.expand();">
+			Expand Webview
+		</button>
+		
+        <button onclick="toggleMainButton();">
+			Toggle Main Button
+		</button>
+		
     </main>
+	
     <div id="viewport"></div>
     <div id="viewport-params-size"></div>
     <div id="viewport-params-expand"></div>
+	
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+	
     <script>
         // Init TWA
         Telegram.WebApp.ready();
+        
+        const AdController = window.Adsgram.init({ blockId: "11446" });
 
         // Event occurs whenever theme settings are changed in the user's Telegram app (including switching to night mode).
         Telegram.WebApp.onEvent('themeChanged', function() {
@@ -166,13 +148,23 @@
         Telegram.WebApp.MainButton.setParams({
             text: 'Main Button'
         });
+		
         Telegram.WebApp.MainButton.onClick(function () {
-            Telegram.WebApp.showAlert('Main Button was clicked')
+            //Telegram.WebApp.showAlert('Main Button was clicked')
+            AdController.show().then((result) => {
+                // user watch ad till the end
+                // your code to reward user
+            }).catch((result) => {
+                // user get error during playing ad or skip ad
+                // do nothing or whatever you want
+            })
         });	
+		
         Telegram.WebApp.MainButton.show();
 
         // Function to call showPopup API
         function showPopup() {
+			
             Telegram.WebApp.showPopup({
                 title: 'Title',
                 message: 'Some message',
@@ -185,43 +177,49 @@
                     Telegram.WebApp.openLink('https://gorillaz.pocoloco-digital.com/');
                 }
             });
+			
         };
 
         // Function to toggle main TWA button
         function toggleMainButton() {
+			
             if (Telegram.WebApp.MainButton.isVisible) {
                 Telegram.WebApp.MainButton.hide();
             } else {
                 Telegram.WebApp.MainButton.show();
             }
+			
         };
 
         function setViewportData() {
-	    
+			
             var sizeEl = document.getElementById('viewport-params-size');
-            /*
-	    sizeEl.innerText = 'width: ' + window.innerWidth + ' x ' + 
+            sizeEl.innerText = 'width: ' + window.innerWidth + ' x ' + 
                 'height: ' + Telegram.WebApp.viewportStableHeight;
-	    */
+
             var expandEl = document.querySelector('#viewport-params-expand');
-	    /*
             expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
-	    */
+			
         }
 
         Telegram.WebApp.setHeaderColor('secondary_bg_color');
 
         setViewportData();
+		
         Telegram.WebApp.onEvent('viewportChanged', setViewportData);
 
         Telegram.WebApp.onEvent('themeChanged', function() {
+			
             document.body.setAttribute('style', '--bg-color:' + Telegram.WebApp.backgroundColor);
+			
         });
 
     </script>
 
     <!-- Eruda is console for mobile browsers -->
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+	
     <script>eruda.init();</script>
+	
 </body>
 </html>
